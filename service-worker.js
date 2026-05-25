@@ -1,6 +1,6 @@
 // Service Worker for PWA Offline Support
 // IMPORTANT: Increment version number when deploying updates to force cache refresh
-const CACHE_NAME = 'veckoinfo-v3';
+const CACHE_NAME = 'veckoinfo-v4';
 const urlsToCache = [
     './',
     './index.html',
