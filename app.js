@@ -403,19 +403,113 @@ function getCurrentWeekNumber() {
 }
 
 // ===================================
-// Service Worker Registration
+// Service Worker Registration with Update Detection
 // ===================================
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('./service-worker.js')
             .then(registration => {
                 console.log('Service Worker registered successfully:', registration.scope);
+                
+                // Check for updates every 5 minutes
+                setInterval(() => {
+                    registration.update();
+                }, 5 * 60 * 1000);
+                
+                // Listen for updates
+                registration.addEventListener('updatefound', () => {
+                    const newWorker = registration.installing;
+                    
+                    newWorker.addEventListener('statechange', () => {
+                        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                            // New service worker available, prompt user to refresh
+                            showUpdateNotification();
+                        }
+                    });
+                });
             })
             .catch(error => {
                 console.log('Service Worker registration failed:', error);
             });
+        
+        // Handle controller change (new service worker activated)
+        let refreshing = false;
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+            if (!refreshing) {
+                refreshing = true;
+                window.location.reload();
+            }
+        });
     });
 }
+
+// Show update notification to user
+function showUpdateNotification() {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #4CAF50;
+        color: white;
+        padding: 16px 24px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        max-width: 90%;
+        animation: slideDown 0.3s ease;
+    `;
+    
+    notification.innerHTML = `
+        <span>🔄 Ny version tillgänglig!</span>
+        <button onclick="window.location.reload()" style="
+            background: white;
+            color: #4CAF50;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+        ">Uppdatera nu</button>
+        <button onclick="this.parentElement.remove()" style="
+            background: transparent;
+            color: white;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+            font-size: 20px;
+        ">×</button>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Auto-remove after 30 seconds
+    setTimeout(() => {
+        if (notification.parentElement) {
+            notification.remove();
+        }
+    }, 30000);
+}
+
+// Add CSS animation for notification
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideDown {
+        from {
+            transform: translateX(-50%) translateY(-100px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+    }
+`;
+document.head.appendChild(style);
 
 // ===================================
 // Export for testing (if needed)
@@ -427,5 +521,3 @@ if (typeof module !== 'undefined' && module.exports) {
         getCurrentWeekNumber
     };
 }
-
-// Made with Bob
