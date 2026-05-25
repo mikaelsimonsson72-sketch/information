@@ -1,33 +1,37 @@
 {
   "weekNumber": 21,
   "year": 2026,
-  "lastUpdated": "2026-05-25T15:30:00Z",
+  "lastUpdated": "2026-05-25T19:30:00Z",
   "title": "Vecka 21 - Information",
   "content": "Välkommen till vecka 21! Här hittar du all viktig information för denna vecka.",
   "sections": [
     {
-      "heading": "Måndag 25 maj",
-      "text": "Möte kl 09:00 i konferensrummet.\nLunch serveras kl 12:00.\nOBS: Parkeringen stängd för underhåll mellan 14:00-16:00."
+      "heading": "Välkommen tillgudstjänst",
+      "text": "30 maj"
     },
     {
-      "heading": "Tisdag 26 maj",
-      "text": "Utbildning i nya systemet kl 10:00.\nKaffe och fika i personalrummet kl 15:00.\nKom ihåg att fylla i tidrapporter."
+      "heading": "Bibelstudium",
+      "text": "kl 10:00 med Zoltan Hrzegh"
     },
     {
-      "heading": "Onsdag 27 maj",
-      "text": "Arbetsplatsträff kl 13:00.\nStäddag - alla hjälper till med gemensamma utrymmen.\nSista dag för inlämning av semesterönskemål."
+      "heading": "Övriga grupper:",
+      "text": "kl 10:00 Engelsktalande i 25an. \nEn grupp samlas i konferensrummet. \nUnga vuxna i övre salen. \nTonåringar i 25:ans soffrum. \nBarnen möts i gårdshuset våning 2 (0-6, 7-9 år) och 10-13 år möts i kontorets hörnrum."
     },
     {
-      "heading": "Torsdag 28 maj",
-      "text": "Leverans av nya möbler kl 08:00.\nTeambuilding aktivitet kl 14:00.\nOBS: Hissen ur funktion mellan 10:00-12:00."
+      "heading": "Gudstjänsten",
+      "text": "Börjar kl 11:10 med en kort förbön i lilla salen."
     },
     {
-      "heading": "Fredag 29 maj",
-      "text": "Fredagsfika kl 14:30.\nVeckans sammanfattning och planering för nästa vecka.\nKontoret stänger kl 16:00."
+      "heading": "Bibeltext",
+      "text": "xxxxx"
+    },
+    {
+      "heading": "Predikan",
+      "text": "Berny Carlsson, \nÄmnet är 'xxxxx'"
     },
     {
       "heading": "Viktiga meddelanden",
-      "text": "• Nya parkeringskort kan hämtas i receptionen\n• IT-support tillgänglig hela veckan\n• Glöm inte att uppdatera dina kontaktuppgifter\n• Brandövning planerad till vecka 23"
+      "text": "(Inga meddelanden)"
     }
   ]
 }
