@@ -1,5 +1,6 @@
 // Service Worker for PWA Offline Support
-const CACHE_NAME = 'veckoinfo-v1';
+// IMPORTANT: Increment version number when deploying updates to force cache refresh
+const CACHE_NAME = 'veckoinfo-v2';
 const urlsToCache = [
     './',
     './index.html',
@@ -41,25 +42,35 @@ self.addEventListener('activate', (event) => {
     return self.clients.claim();
 });
 
-// Fetch event - serve from cache, fallback to network
+// Fetch event - Network first for JSON, cache first for static assets
 self.addEventListener('fetch', (event) => {
+    // Network-first strategy for JSON files (always get fresh data)
+    if (event.request.url.includes('.json')) {
+        event.respondWith(
+            fetch(event.request)
+                .then((response) => {
+                    // Clone and cache the response
+                    if (response && response.status === 200) {
+                        const responseToCache = response.clone();
+                        caches.open(CACHE_NAME).then((cache) => {
+                            cache.put(event.request, responseToCache);
+                        });
+                    }
+                    return response;
+                })
+                .catch(() => {
+                    // Network failed, try cache
+                    return caches.match(event.request);
+                })
+        );
+        return;
+    }
+
+    // Cache-first strategy for static assets
     event.respondWith(
         caches.match(event.request)
             .then((response) => {
-                // Cache hit - return response
                 if (response) {
-                    // Update cache in background for JSON files
-                    if (event.request.url.includes('.json')) {
-                        fetch(event.request).then((fetchResponse) => {
-                            if (fetchResponse && fetchResponse.status === 200) {
-                                caches.open(CACHE_NAME).then((cache) => {
-                                    cache.put(event.request, fetchResponse.clone());
-                                });
-                            }
-                        }).catch(() => {
-                            // Network failed, use cached version
-                        });
-                    }
                     return response;
                 }
 
@@ -133,4 +144,9 @@ self.addEventListener('notificationclick', (event) => {
     );
 });
 
-// Made with Bob
+// Listen for messages from the main app to skip waiting
+self.addEventListener('message', (event) => {
+    if (event.data && event.data.type === 'SKIP_WAITING') {
+        self.skipWaiting();
+    }
+});
