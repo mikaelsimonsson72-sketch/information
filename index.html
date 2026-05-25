@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Veckovis information - Hämta senaste informationen">
+    <meta name="theme-color" content="#2196F3">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Veckoinfo">
+    
+    <title>Veckovis Information</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="header-title">📅 Veckovis Information</h1>
+            <div class="header-subtitle">Senaste informationen - alltid uppdaterad</div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            
+            <!-- Loading State -->
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>Laddar information...</p>
+            </div>
+
+            <!-- Error State -->
+            <div id="error" class="error-message" style="display: none;">
+                <div class="error-icon">⚠️</div>
+                <h3>Kunde inte ladda information</h3>
+                <p id="error-text"></p>
+                <button onclick="location.reload()" class="btn-retry">Försök igen</button>
+            </div>
+
+            <!-- Current Week Section -->
+            <section id="current-week-section" class="section" style="display: none;">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="icon">📌</span>
+                        Innevarande Vecka
+                    </h2>
+                    <div class="week-badge" id="current-week-badge"></div>
+                </div>
+                
+                <div class="card current-week-card">
+                    <div class="card-header">
+                        <h3 id="current-week-title"></h3>
+                        <div class="last-updated">
+                            <span class="icon">🕐</span>
+                            <span id="current-week-updated"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <div id="current-week-content"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Upcoming Weeks Section -->
+            <section id="upcoming-weeks-section" class="section" style="display: none;">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="icon">📆</span>
+                        Kommande Veckor
+                    </h2>
+                </div>
+                
+                <div id="upcoming-weeks-content" class="upcoming-weeks-grid"></div>
+            </section>
+
+            <!-- Analytics Info (for users) -->
+            <section id="info-section" class="section info-section" style="display: none;">
+                <div class="info-card">
+                    <div class="info-icon">ℹ️</div>
+                    <div class="info-content">
+                        <h4>Tips!</h4>
+                        <p>Lägg till denna sida på din hemskärm för snabb åtkomst. Fungerar även offline!</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>Informationen uppdateras regelbundet</p>
+                <p class="footer-meta">
+                    <span id="connection-status" class="status-online">● Online</span>
+                    <span class="separator">•</span>
+                    <a href="admin-guide.html" class="footer-link">Administratörsguide</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Install PWA Prompt -->
+    <div id="install-prompt" class="install-prompt" style="display: none;">
+        <div class="install-prompt-content">
+            <div class="install-prompt-icon">📱</div>
+            <div class="install-prompt-text">
+                <h4>Installera appen</h4>
+                <p>Lägg till på hemskärmen för enkel åtkomst</p>
+            </div>
+            <button id="install-button" class="btn-install">Installera</button>
+            <button id="dismiss-install" class="btn-dismiss">×</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>

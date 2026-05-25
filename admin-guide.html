@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administratörsguide - Veckovis Information</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .guide-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .guide-section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .guide-section h2 {
+            color: #2196F3;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #BBDEFB;
+            padding-bottom: 10px;
+        }
+        .guide-section h3 {
+            color: #1976D2;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        .code-block {
+            background: #f5f5f5;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        .step-list {
+            counter-reset: step-counter;
+            list-style: none;
+            padding-left: 0;
+        }
+        .step-list li {
+            counter-increment: step-counter;
+            margin-bottom: 20px;
+            padding-left: 40px;
+            position: relative;
+        }
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #2196F3;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .warning-box {
+            background: #FFF3E0;
+            border-left: 4px solid #FF9800;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .tip-box {
+            background: #E8F5E9;
+            border-left: 4px solid #4CAF50;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #2196F3;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="header-title">📚 Administratörsguide</h1>
+            <div class="header-subtitle">Så uppdaterar du veckovis information</div>
+        </div>
+    </header>
+
+    <div class="guide-container">
+        <a href="index.html" class="back-link">← Tillbaka till startsidan</a>
+
+        <!-- Översikt -->
+        <div class="guide-section">
+            <h2>📋 Översikt</h2>
+            <p>Denna guide visar hur du som administratör uppdaterar informationen som visas för användarna. Systemet använder JSON-filer för att lagra data, vilket gör det enkelt att uppdatera innehållet.</p>
+            
+            <div class="tip-box">
+                <strong>💡 Tips:</strong> Alla ändringar träder i kraft direkt när filerna uppdateras på GitHub. Användarna ser ändringarna nästa gång de laddar om sidan.
+            </div>
+        </div>
+
+        <!-- Metod 1: GitHub Web Interface -->
+        <div class="guide-section">
+            <h2>🌐 Metod 1: Uppdatera via GitHub Web Interface (Enklast)</h2>
+            
+            <ol class="step-list">
+                <li>
+                    <strong>Logga in på GitHub</strong><br>
+                    Gå till ditt repository på GitHub.com
+                </li>
+                <li>
+                    <strong>Navigera till datafilen</strong><br>
+                    Klicka på mappen <code>data/</code> och välj den fil du vill uppdatera:
+                    <ul style="margin-top: 10px;">
+                        <li><code>current-week.json</code> - Innevarande veckas information</li>
+                        <li><code>upcoming-weeks.json</code> - Kommande veckors översikt</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Redigera filen</strong><br>
+                    Klicka på pennikonen (Edit) i övre högra hörnet
+                </li>
+                <li>
+                    <strong>Gör dina ändringar</strong><br>
+                    Uppdatera texten enligt instruktionerna nedan
+                </li>
+                <li>
+                    <strong>Spara ändringarna</strong><br>
+                    Scrolla ner, skriv en beskrivning av ändringen (t.ex. "Uppdaterad vecka 21")<br>
+                    Klicka på "Commit changes"
+                </li>
+                <li>
+                    <strong>Vänta 30-60 sekunder</strong><br>
+                    GitHub Pages uppdaterar automatiskt sajten
+                </li>
+            </ol>
+        </div>
+
+        <!-- Metod 2: VS Code -->
+        <div class="guide-section">
+            <h2>💻 Metod 2: Uppdatera via VS Code (För tekniska användare)</h2>
+            
+            <ol class="step-list">
+                <li>
+                    <strong>Öppna projektet i VS Code</strong><br>
+                    File → Open Folder → Välj projektmappen
+                </li>
+                <li>
+                    <strong>Hitta och öppna JSON-filen</strong><br>
+                    Navigera till <code>data/current-week.json</code> eller <code>data/upcoming-weeks.json</code>
+                </li>
+                <li>
+                    <strong>Redigera innehållet</strong><br>
+                    Gör dina ändringar direkt i editorn
+                </li>
+                <li>
+                    <strong>Spara filen</strong><br>
+                    Ctrl+S (Windows) eller Cmd+S (Mac)
+                </li>
+                <li>
+                    <strong>Commit och push till GitHub</strong><br>
+                    Använd VS Codes Git-integration eller terminalen:
+                    <div class="code-block">
+git add data/current-week.json<br>
+git commit -m "Uppdaterad vecka 21"<br>
+git push
+                    </div>
+                </li>
+            </ol>
+        </div>
+
+        <!-- Filformat: Current Week -->
+        <div class="guide-section">
+            <h2>📄 Filformat: current-week.json</h2>
+            
+            <h3>Struktur</h3>
+            <div class="code-block">
+{
+  "weekNumber": 21,
+  "year": 2026,
+  "lastUpdated": "2026-05-25T15:30:00Z",
+  "title": "Vecka 21 - Information",
+  "content": "Huvudtext för veckan...",
+  "sections": [
+    {
+      "heading": "Måndag 25 maj",
+      "text": "Information för måndag..."
+    }
+  ]
+}
+            </div>
+
+            <h3>Fältbeskrivningar</h3>
+            <ul>
+                <li><strong>weekNumber:</strong> Veckonummer (1-52)</li>
+                <li><strong>year:</strong> År (YYYY)</li>
+                <li><strong>lastUpdated:</strong> Tidsstämpel i ISO 8601 format (använd aktuell tid)</li>
+                <li><strong>title:</strong> Rubrik som visas överst</li>
+                <li><strong>content:</strong> Huvudtext/introduktion för veckan</li>
+                <li><strong>sections:</strong> Array med sektioner (dagar, kategorier, etc.)</li>
+            </ul>
+
+            <div class="tip-box">
+                <strong>💡 Tips för formatering:</strong>
+                <ul style="margin-top: 10px;">
+                    <li>Använd <code>\n</code> för radbrytningar</li>
+                    <li>Använd <code>•</code> eller <code>-</code> för punktlistor</li>
+                    <li>Länkar formateras automatiskt</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Filformat: Upcoming Weeks -->
+        <div class="guide-section">
+            <h2>📅 Filformat: upcoming-weeks.json</h2>
+            
+            <h3>Struktur</h3>
+            <div class="code-block">
+{
+  "lastUpdated": "2026-05-25T15:30:00Z",
+  "weeks": [
+    {
+      "weekNumber": 22,
+      "year": 2026,
+      "summary": "Kort översikt för vecka 22..."
+    }
+  ]
+}
+            </div>
+
+            <h3>Fältbeskrivningar</h3>
+            <ul>
+                <li><strong>lastUpdated:</strong> Tidsstämpel för senaste uppdatering</li>
+                <li><strong>weeks:</strong> Array med kommande veckor (rekommenderat 4-6 veckor)</li>
+                <li><strong>weekNumber:</strong> Veckonummer</li>
+                <li><strong>year:</strong> År</li>
+                <li><strong>summary:</strong> Kort sammanfattning (2-3 meningar)</li>
+            </ul>
+        </div>
+
+        <!-- Vanliga uppgifter -->
+        <div class="guide-section">
+            <h2>✅ Vanliga uppgifter</h2>
+            
+            <h3>Uppdatera innevarande vecka</h3>
+            <ol class="step-list">
+                <li>Öppna <code>data/current-week.json</code></li>
+                <li>Ändra <code>weekNumber</code> till aktuell vecka</li>
+                <li>Uppdatera <code>lastUpdated</code> till aktuell tid</li>
+                <li>Ändra innehållet i <code>sections</code></li>
+                <li>Spara och commit</li>
+            </ol>
+
+            <h3>Lägga till ny sektion</h3>
+            <div class="code-block">
+{
+  "heading": "Ny rubrik",
+  "text": "Din text här..."
+}
+            </div>
+            <p>Lägg till detta objekt i <code>sections</code>-arrayen, separera med komma.</p>
+
+            <h3>Ta bort en sektion</h3>
+            <p>Ta bort hela objektet från <code>sections</code>-arrayen. Glöm inte att ta bort kommat om det är sista elementet.</p>
+        </div>
+
+        <!-- Felsökning -->
+        <div class="guide-section">
+            <h2>🔧 Felsökning</h2>
+            
+            <h3>Sidan visar inte uppdateringar</h3>
+            <ul>
+                <li>Vänta 1-2 minuter efter commit</li>
+                <li>Ladda om sidan med Ctrl+F5 (tvinga refresh)</li>
+                <li>Kontrollera att GitHub Actions körde utan fel</li>
+            </ul>
+
+            <h3>JSON-fel</h3>
+            <div class="warning-box">
+                <strong>⚠️ Vanliga fel:</strong>
+                <ul style="margin-top: 10px;">
+                    <li>Glömt komma mellan element</li>
+                    <li>Extra komma efter sista elementet</li>
+                    <li>Citattecken som inte stängts</li>
+                    <li>Felaktig escape-sekvens (använd <code>\\</code> för backslash)</li>
+                </ul>
+            </div>
+
+            <h3>Validera JSON</h3>
+            <p>Använd en JSON-validator innan du sparar:</p>
+            <ul>
+                <li><a href="https://jsonlint.com/" target="_blank">JSONLint.com</a></li>
+                <li>VS Code har inbyggd JSON-validering</li>
+            </ul>
+        </div>
+
+        <!-- Bästa praxis -->
+        <div class="guide-section">
+            <h2>⭐ Bästa praxis</h2>
+            
+            <ul>
+                <li><strong>Uppdatera regelbundet:</strong> Håll informationen aktuell, helst varje måndag</li>
+                <li><strong>Var koncis:</strong> Korta, tydliga meddelanden fungerar bäst på mobiler</li>
+                <li><strong>Använd struktur:</strong> Dela upp information i sektioner för bättre läsbarhet</li>
+                <li><strong>Testa på mobil:</strong> Kontrollera hur det ser ut på telefon efter uppdatering</li>
+                <li><strong>Backup:</strong> Git-historiken är din backup, men spara viktiga versioner lokalt också</li>
+                <li><strong>Commit-meddelanden:</strong> Skriv tydliga beskrivningar av vad du ändrat</li>
+            </ul>
+
+            <div class="tip-box">
+                <strong>💡 Pro-tips:</strong> Skapa en mall för varje vecka så du bara behöver fylla i ny information istället för att skriva om allt från början.
+            </div>
+        </div>
+
+        <!-- Kontakt -->
+        <div class="guide-section">
+            <h2>📞 Behöver du hjälp?</h2>
+            <p>Om du stöter på problem eller har frågor:</p>
+            <ul>
+                <li>Kontrollera GitHub Actions-loggen för felmeddelanden</li>
+                <li>Se över JSON-syntaxen med en validator</li>
+                <li>Återställ till tidigare version via Git-historiken</li>
+            </ul>
+        </div>
+
+        <a href="index.html" class="back-link">← Tillbaka till startsidan</a>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>Veckovis Information - Administratörsguide</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

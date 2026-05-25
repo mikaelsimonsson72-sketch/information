@@ -1,0 +1,591 @@
+/* ===================================
+   CSS Variables & Reset
+   =================================== */
+:root {
+    --primary-color: #2196F3;
+    --primary-dark: #1976D2;
+    --primary-light: #BBDEFB;
+    --secondary-color: #4CAF50;
+    --accent-color: #FF9800;
+    --error-color: #F44336;
+    --text-primary: #212121;
+    --text-secondary: #757575;
+    --background: #F5F5F5;
+    --card-background: #FFFFFF;
+    --border-color: #E0E0E0;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.15);
+    --border-radius: 12px;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--background);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===================================
+   Container & Layout
+   =================================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===================================
+   Header
+   =================================== */
+.header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: 24px 0;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.header-subtitle {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* ===================================
+   Main Content
+   =================================== */
+.main-content {
+    padding: 32px 0;
+    min-height: calc(100vh - 200px);
+}
+
+/* ===================================
+   Sections
+   =================================== */
+.section {
+    margin-bottom: 32px;
+    animation: fadeIn 0.5s ease;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.section-title .icon {
+    font-size: 28px;
+}
+
+/* ===================================
+   Cards
+   =================================== */
+.card {
+    background: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 24px;
+    transition: var(--transition);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+}
+
+.card-header {
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--primary-light);
+}
+
+.card-header h3 {
+    font-size: 20px;
+    color: var(--primary-dark);
+    margin-bottom: 8px;
+}
+
+.card-content {
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.card-content p {
+    margin-bottom: 12px;
+}
+
+.card-content h4 {
+    font-size: 18px;
+    color: var(--text-primary);
+    margin: 20px 0 12px 0;
+    font-weight: 600;
+}
+
+.card-content ul {
+    margin-left: 20px;
+    margin-bottom: 12px;
+}
+
+.card-content li {
+    margin-bottom: 8px;
+}
+
+/* ===================================
+   Current Week Card
+   =================================== */
+.current-week-card {
+    border-left: 4px solid var(--primary-color);
+}
+
+.week-badge {
+    background: var(--primary-color);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.last-updated {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.last-updated .icon {
+    font-size: 16px;
+}
+
+/* ===================================
+   Upcoming Weeks Grid
+   =================================== */
+.upcoming-weeks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.upcoming-week-card {
+    background: var(--card-background);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    border-left: 4px solid var(--secondary-color);
+}
+
+.upcoming-week-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+}
+
+.upcoming-week-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.upcoming-week-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.upcoming-week-number {
+    background: var(--secondary-color);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.upcoming-week-summary {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* ===================================
+   Loading State
+   =================================== */
+.loading {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 20px;
+    border: 4px solid var(--primary-light);
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ===================================
+   Error State
+   =================================== */
+.error-message {
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.error-icon {
+    font-size: 64px;
+    margin-bottom: 16px;
+}
+
+.error-message h3 {
+    color: var(--error-color);
+    margin-bottom: 12px;
+}
+
+.error-message p {
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+}
+
+.btn-retry {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 24px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-retry:hover {
+    background: var(--primary-dark);
+    transform: scale(1.05);
+}
+
+/* ===================================
+   Info Section
+   =================================== */
+.info-section {
+    margin-top: 40px;
+}
+
+.info-card {
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: var(--shadow);
+}
+
+.info-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+}
+
+.info-content h4 {
+    font-size: 16px;
+    margin-bottom: 4px;
+    color: var(--primary-dark);
+}
+
+.info-content p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* ===================================
+   Footer
+   =================================== */
+.footer {
+    background: var(--card-background);
+    border-top: 1px solid var(--border-color);
+    padding: 24px 0;
+    margin-top: 40px;
+}
+
+.footer-content {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.footer-meta {
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.status-online {
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.status-offline {
+    color: var(--error-color);
+    font-weight: 600;
+}
+
+.separator {
+    color: var(--border-color);
+}
+
+.footer-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-link:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
+/* ===================================
+   Install PWA Prompt
+   =================================== */
+.install-prompt {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+    background: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 1000;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.install-prompt-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.install-prompt-icon {
+    font-size: 40px;
+    flex-shrink: 0;
+}
+
+.install-prompt-text {
+    flex: 1;
+}
+
+.install-prompt-text h4 {
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+
+.install-prompt-text p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.btn-install {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.btn-install:hover {
+    background: var(--primary-dark);
+}
+
+.btn-dismiss {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0 8px;
+    transition: var(--transition);
+}
+
+.btn-dismiss:hover {
+    color: var(--text-primary);
+}
+
+/* ===================================
+   Animations
+   =================================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===================================
+   Responsive Design
+   =================================== */
+@media (max-width: 768px) {
+    .header-title {
+        font-size: 24px;
+    }
+
+    .section-title {
+        font-size: 20px;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .upcoming-weeks-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .install-prompt {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+    }
+
+    .install-prompt-content {
+        flex-wrap: wrap;
+    }
+
+    .btn-install {
+        width: 100%;
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    .header {
+        padding: 20px 0;
+    }
+
+    .header-title {
+        font-size: 20px;
+    }
+
+    .main-content {
+        padding: 24px 0;
+    }
+
+    .card {
+        padding: 16px;
+    }
+
+    .info-card {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* ===================================
+   Print Styles
+   =================================== */
+@media print {
+    .header,
+    .footer,
+    .install-prompt,
+    .info-section {
+        display: none;
+    }
+
+    .card {
+        box-shadow: none;
+        border: 1px solid var(--border-color);
+        page-break-inside: avoid;
+    }
+}
+
+/* ===================================
+   Dark Mode Support (Optional)
+   =================================== */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-primary: #E0E0E0;
+        --text-secondary: #B0B0B0;
+        --background: #121212;
+        --card-background: #1E1E1E;
+        --border-color: #333333;
+    }
+
+    .info-card {
+        background: linear-gradient(135deg, #1E3A5F 0%, #2C5282 100%);
+    }
+}
+
+/* Made with Bob */

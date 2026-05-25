@@ -1,0 +1,33 @@
+{
+  "weekNumber": 21,
+  "year": 2026,
+  "lastUpdated": "2026-05-25T15:30:00Z",
+  "title": "Vecka 21 - Information",
+  "content": "Välkommen till vecka 21! Här hittar du all viktig information för denna vecka.",
+  "sections": [
+    {
+      "heading": "Måndag 25 maj",
+      "text": "Möte kl 09:00 i konferensrummet.\nLunch serveras kl 12:00.\nOBS: Parkeringen stängd för underhåll mellan 14:00-16:00."
+    },
+    {
+      "heading": "Tisdag 26 maj",
+      "text": "Utbildning i nya systemet kl 10:00.\nKaffe och fika i personalrummet kl 15:00.\nKom ihåg att fylla i tidrapporter."
+    },
+    {
+      "heading": "Onsdag 27 maj",
+      "text": "Arbetsplatsträff kl 13:00.\nStäddag - alla hjälper till med gemensamma utrymmen.\nSista dag för inlämning av semesterönskemål."
+    },
+    {
+      "heading": "Torsdag 28 maj",
+      "text": "Leverans av nya möbler kl 08:00.\nTeambuilding aktivitet kl 14:00.\nOBS: Hissen ur funktion mellan 10:00-12:00."
+    },
+    {
+      "heading": "Fredag 29 maj",
+      "text": "Fredagsfika kl 14:30.\nVeckans sammanfattning och planering för nästa vecka.\nKontoret stänger kl 16:00."
+    },
+    {
+      "heading": "Viktiga meddelanden",
+      "text": "• Nya parkeringskort kan hämtas i receptionen\n• IT-support tillgänglig hela veckan\n• Glöm inte att uppdatera dina kontaktuppgifter\n• Brandövning planerad till vecka 23"
+    }
+  ]
+}
