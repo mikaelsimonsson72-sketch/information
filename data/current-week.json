@@ -1,17 +1,17 @@
 {
-  "weekNumber": 21,
+  "weekNumber": 25,
   "year": 2026,
-  "lastUpdated": "2026-05-25",
+  "lastUpdated": "2026-06-18",
   "title": "Denna veckas information",
   "content": "Här hittar du all viktig information för denna vecka.",
   "sections": [
     {
       "heading": "Välkommen till gudstjänst",
-      "text": "30 maj"
+      "text": "20 Juni"
     },
     {
       "heading": "Bibelstudium",
-      "text": "kl 10:00 med Zoltan Hrzegh"
+      "text": "kl 10:00 med Tamara Janbelitze"
     },
     {
       "heading": "Övriga grupper:",
@@ -22,16 +22,16 @@
       "text": "Börjar kl 11:10 med en kort förbön i lilla salen."
     },
     {
-      "heading": "Bibeltext",
-      "text": "xxxxx"
+      "heading": "Bibeltext ",
+      "text": "5 MOSEBOK 10:18-19"
     },
     {
       "heading": "Predikan",
-      "text": "Berny Carlsson, \nÄmnet är 'xxxxx'"
+      "text": "Izla Bethdavid, \nÄmnet är 'Älska därför flyktingen'"
     },
     {
       "heading": "Viktiga meddelanden",
-      "text": "- Den 6 juni är det den internationella sabbaten. Efter gudstjänsten blir det picknick. \nVar och en får ta med sig en komplett picknick låda som räcker till sig själv och en person till. \nKyrkan bjuder på frukt och vatten. \nPlats för picknicken kommer att annonseras ut senare. \nVälkomna!"
+      "text": "- Ingen info just nu!"
     }
   ]
 }
